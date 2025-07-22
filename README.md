@@ -1,2 +1,155 @@
 # utkarsh-3dsampleweb
 # this is basic 3d website of a serum  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE SERUM</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      background: #f7f3f0 url('https://www.transparenttextures.com/patterns/green-leaves.png');
+      overflow: hidden;
+    }
+
+    header, footer {
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .page {
+      height: calc(100vh - 120px);
+      width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .description {
+      flex: 1;
+      max-width: 600px;
+      text-align: left;
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #333;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+    .spline-wrapper {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      will-change: transform;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transition: transform 0.3s ease;
+      pointer-events: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .description {
+        margin-right: 0;
+        margin-bottom: 20px;
+        max-width: 100%;
+      }
+
+      .spline-wrapper {
+        width: 100%;
+        height: 300px;
+      }
+
+      iframe {
+        height: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .description {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>THE SERUM</h1>
+  </header>
+
+  <section class="page">
+    <div class="description">
+      <p>
+        Experience the purity of nature with <strong>THE SERUM</strong> – a 100% organic skincare solution designed to rejuvenate, hydrate, and protect your skin. Free from harmful chemicals, this natural serum blends botanical ingredients to enhance your natural glow.
+      </p>
+    </div>
+
+    <div class="spline-wrapper" id="splineContainer">
+      <iframe
+        id="splineIframe"
+        src="https://my.spline.design/untitled-0SupuLwnP2uXzZWR90hplQda/"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 THE SERUM. All rights reserved.</p>
+  </footer>
+
+  <script>
+    if (window.innerWidth > 768) {
+      document.addEventListener('mousemove', (e) => {
+        const iframe = document.getElementById('splineIframe');
+        const { innerWidth, innerHeight } = window;
+        const x = (e.clientX / innerWidth - 0.5) * 10; 
+        const y = (e.clientY / innerHeight - 0.5) * -10; 
+        iframe.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+      });
+
+      document.addEventListener('mouseleave', () => {
+        const iframe = document.getElementById('splineIframe');
+        iframe.style.transform = `rotateY(0deg) rotateX(0deg)`;
+      });
+    }
+  </script>
+</body>
+</html>
